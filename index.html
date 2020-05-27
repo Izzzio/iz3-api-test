@@ -1,48 +1,84 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>iZ³ API Test</title>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    </head>
-    <body>
-    <div class="container-fluid">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>iZ³ API Test</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container-fluid">
 
-        <div class="row">
-            <div class="col-md border">
-                <form id="deploy-contract">
-                    <div class="form-group">
-                        <label for="code">Contract source code</label>
-                        <textarea class="form-control" id="code" rows="10"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="resources">Resources rent</label>
-                        <input type="text" class="form-control" id="resources" value="0">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Deploy contract</button>
-                    <div>
-                        <strong>Result (object to JSON):</strong>
-                        <pre>
+    <div class="row">
+        <div class="col-md border">
+            <form id="deploy-contract">
+                <div class="form-group">
+                    <label for="code">Contract source code</label>
+                    <textarea class="form-control" id="code" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="resources">Resources rent</label>
+                    <input type="text" class="form-control" id="resources" value="0">
+                </div>
+                <button type="submit" class="btn btn-primary">Deploy contract</button>
+                <div>
+                    <strong>Result (object to JSON):</strong>
+                    <pre>
                         <div id="result"></div>
                         </pre>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md border">
-                <form>
-                    <button type="submit" class="btn btn-primary">Deploy method</button>
-                </form>
-            </div>
-            <div class="col-md border">
-                <form>
-                    <button type="submit" class="btn btn-primary">Call method</button>
-                </form>
-            </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md border">
+            <form id="deploy-method">
+                <div class="form-group">
+                    <label for="address">From (contract address)</label>
+                    <input type="text" class="form-control" id="address" value="1">
+                </div>
+                <div class="form-group">
+                    <label for="method">Method name (from deployed contract)</label>
+                    <input type="text" class="form-control" id="method" value="checkContractAddress">
+                </div>
+                <div class="form-group">
+                    <label for="params">Params for method</label>
+                    <input type="text" class="form-control" id="params" value="['1']">
+                </div>
+                <button type="submit" class="btn btn-primary">Deploy method</button>
+                <div>
+                    <strong>Result (object to JSON):</strong>
+                    <pre>
+                        <div id="result"></div>
+                        </pre>
+                </div>
+            </form>
+        </div>
+        <div class="col-md border">
+            <form id="call-method">
+                <div class="form-group">
+                    <label for="address">From (contract address)</label>
+                    <input type="text" class="form-control" id="address" value="1">
+                </div>
+                <div class="form-group">
+                    <label for="method">Method name (from deployed contract)</label>
+                    <input type="text" class="form-control" id="method" value="checkContractAddress">
+                </div>
+                <div class="form-group">
+                    <label for="params">Params for method</label>
+                    <input type="text" class="form-control" id="params" value="['1']">
+                </div>
+                <button type="submit" class="btn btn-primary">Call method</button>
+                <div>
+                    <strong>Result (object to JSON):</strong>
+                    <pre>
+                        <div id="result"></div>
+                        </pre>
+                </div>
+            </form>
         </div>
     </div>
-    <script src="assets/jquery/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    </body>
+</div>
+<script src="assets/jquery/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
 </html>
