@@ -71,13 +71,35 @@
     $('#get-info').on('submit', function (e) {
         e.preventDefault();
         let button = $('button', this);
+        let result = $('#result', this);
+
         button.attr('disabled', true);
+        result.html('');
         $.ajax({
-            url: appURL + '/contracts/ecma/getInfo',
+            url: appURL + '/getInfo',
             method: 'GET',
             dataType: 'json',
         })
             .always(function (resp) {
+                result.html(`${toBeautyfyJSON(resp)}`);
+                button.attr('disabled', false);
+            });
+    });
+
+    $('#get-block').on('submit', function (e) {
+        e.preventDefault();
+        let button = $('button', this);
+        let result = $('#result', this);
+
+        button.attr('disabled', true);
+        result.html('');
+        $.ajax({
+            url: appURL + '/getBlock/'+($('#block', this).val() || false),
+            method: 'GET',
+            dataType: 'json',
+        })
+            .always(function (resp) {
+                result.html(`${toBeautyfyJSON(resp)}`);
                 button.attr('disabled', false);
             });
     });

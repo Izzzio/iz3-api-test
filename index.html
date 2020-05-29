@@ -76,6 +76,53 @@
             </form>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md border">
+            <form id="get-info">
+                <button type="submit" class="btn btn-primary">Get network info</button>
+                <div>
+                    <strong>Result (object to JSON):</strong>
+                    <pre>
+                        <div id="result"></div>
+                        </pre>
+                </div>
+            </form>
+        </div>
+        <div class="col-md border">
+            <form id="get-block">
+                <div class="form-group">
+                    <label for="block">Block number</label>
+                    <input type="text" class="form-control" id="block" value="1">
+                </div>
+                <button type="submit" class="btn btn-primary">Get block info</button>
+                <div>
+                    <strong>Result (object to JSON):</strong>
+                    <pre>
+                        <div id="result"></div>
+                        </pre>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md border">
+            <form id="keypoa-check-key">
+                <div class="form-group">
+                    <label for="key">Public key</label>
+                    <textarea class="form-control" id="key" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Is key from key storage ?</button>
+                <div>
+                    <strong>Result (object to JSON):</strong>
+                    <pre>
+                        <div id="result"></div>
+                        </pre>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <script src="assets/jquery/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
