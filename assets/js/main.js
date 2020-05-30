@@ -94,9 +94,86 @@
         button.attr('disabled', true);
         result.html('');
         $.ajax({
-            url: appURL + '/getBlock/'+($('#block', this).val() || false),
+            url: appURL + '/getBlock/' + ($('#block', this).val() || false),
             method: 'GET',
             dataType: 'json',
+        })
+            .always(function (resp) {
+                result.html(`${toBeautyfyJSON(resp)}`);
+                button.attr('disabled', false);
+            });
+    });
+
+    $('#keypoa-create-key').on('submit', function (e) {
+        e.preventDefault();
+        let button = $('button', this);
+        let result = $('#result', this);
+        let data = {
+            key: ($('#key', this).val() || false),
+            type: ($('#type', this).val() || false)
+        };
+        button.attr('disabled', true);
+        result.html('');
+        $.ajax({
+            url: appURL + '/keypoa/issueKey',
+            method: 'POST',
+            data: data,
+        })
+            .always(function (resp) {
+                result.html(`${toBeautyfyJSON(resp)}`);
+                button.attr('disabled', false);
+            });
+    });
+
+    $('#keypoa-check-key-get').on('submit', function (e) {
+        e.preventDefault();
+        let button = $('button', this);
+        let result = $('#result', this);
+        button.attr('disabled', true);
+        result.html('');
+        $.ajax({
+            url: appURL + '/keypoa/isKeyFromKeyStorage/' + (($('#key', this).val() || false)),
+            method: 'GET'
+        })
+            .always(function (resp) {
+                result.html(`${toBeautyfyJSON(resp)}`);
+                button.attr('disabled', false);
+            });
+    });
+
+    $('#keypoa-check-key-post').on('submit', function (e) {
+        e.preventDefault();
+        let button = $('button', this);
+        let result = $('#result', this);
+        let data = {
+            key: ($('#key', this).val() || false)
+        };
+        button.attr('disabled', true);
+        result.html('');
+        $.ajax({
+            url: appURL + '/keypoa/isKeyFromKeyStorage/',
+            method: 'POST',
+            data: data,
+        })
+            .always(function (resp) {
+                result.html(`${toBeautyfyJSON(resp)}`);
+                button.attr('disabled', false);
+            });
+    });
+
+    $('#keypoa-del-key').on('submit', function (e) {
+        e.preventDefault();
+        let button = $('button', this);
+        let result = $('#result', this);
+        let data = {
+            key: ($('#key', this).val() || false)
+        };
+        button.attr('disabled', true);
+        result.html('');
+        $.ajax({
+            url: appURL + '/keypoa/deleteKey',
+            method: 'POST',
+            data: data,
         })
             .always(function (resp) {
                 result.html(`${toBeautyfyJSON(resp)}`);
@@ -108,7 +185,6 @@
         try {
             data = JSON.stringify(data, undefined, 2);
         } catch (e) {
-
         }
         return data;
     };
