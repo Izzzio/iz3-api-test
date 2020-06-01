@@ -1,10 +1,4 @@
 (function () {
-
-    const protocol = 'http://';
-    const domain = 'localhost';
-    const port = ':3015';
-    const appURL = protocol + domain + port;
-
     $('#deploy-contract').on('submit', function (e) {
         e.preventDefault();
         let button = $('button', this);
@@ -16,7 +10,7 @@
         button.attr('disabled', true);
         result.html('');
         $.ajax({
-            url: appURL + '/contracts/ecma/deployContract',
+            url: '/contracts/ecma/deployContract',
             method: 'POST',
             data: data,
         })
@@ -37,7 +31,7 @@
         button.attr('disabled', true);
         result.html('');
         $.ajax({
-            url: appURL + '/contracts/ecma/deployMethod/' + contractAddress + '/' + contractMethod,
+            url: '/contracts/ecma/deployMethod/' + contractAddress + '/' + contractMethod,
             method: 'POST',
             data: {'argsEncoded': JSON.stringify(methodParams)},
         })
@@ -58,7 +52,7 @@
         button.attr('disabled', true);
         result.html('');
         $.ajax({
-            url: appURL + '/contracts/ecma/callMethod/' + contractAddress + '/' + contractMethod,
+            url: '/contracts/ecma/callMethod/' + contractAddress + '/' + contractMethod,
             method: 'POST',
             data: {'argsEncoded': JSON.stringify(methodParams)},
         })
@@ -76,7 +70,7 @@
         button.attr('disabled', true);
         result.html('');
         $.ajax({
-            url: appURL + '/getInfo',
+            url: '/getInfo',
             method: 'GET',
             dataType: 'json',
         })
@@ -94,7 +88,7 @@
         button.attr('disabled', true);
         result.html('');
         $.ajax({
-            url: appURL + '/getBlock/' + ($('#block', this).val() || false),
+            url: '/getBlock/' + ($('#block', this).val() || false),
             method: 'GET',
             dataType: 'json',
         })
@@ -115,7 +109,7 @@
         button.attr('disabled', true);
         result.html('');
         $.ajax({
-            url: appURL + '/keypoa/issueKey',
+            url: '/keypoa/issueKey',
             method: 'POST',
             data: data,
         })
@@ -132,7 +126,7 @@
         button.attr('disabled', true);
         result.html('');
         $.ajax({
-            url: appURL + '/keypoa/isKeyFromKeyStorage/' + (($('#key', this).val() || false)),
+            url: '/keypoa/isKeyFromKeyStorage/' + (($('#key', this).val() || false)),
             method: 'GET'
         })
             .always(function (resp) {
@@ -151,7 +145,7 @@
         button.attr('disabled', true);
         result.html('');
         $.ajax({
-            url: appURL + '/keypoa/isKeyFromKeyStorage/',
+            url: '/keypoa/isKeyFromKeyStorage/',
             method: 'POST',
             data: data,
         })
@@ -171,7 +165,7 @@
         button.attr('disabled', true);
         result.html('');
         $.ajax({
-            url: appURL + '/keypoa/deleteKey',
+            url: '/keypoa/deleteKey',
             method: 'POST',
             data: data,
         })
